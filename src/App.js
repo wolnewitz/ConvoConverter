@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Col, PageHeader, Grid, Row } from 'react-bootstrap'
 import TextBox from './TextBox';
 import TextTransform from './TextTransform';
+import replaceName from './replaceName';
 
 class App extends Component {
   state = {
