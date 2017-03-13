@@ -6,6 +6,8 @@ import TextTransform from './TextTransform';
 class App extends Component {
   state = {
     convo: '',
+    nameBox: '',
+    replaceName: '',
     timeStampsRemoved: false,
   };
 
@@ -13,8 +15,17 @@ class App extends Component {
     this.setState({convo: e.target.value});
   }
 
+  handleTextChange = (e) => {
+    this.setState({[e.target.name]: e.target.value})
+  }
+
+  submitTextForm = (e) => {
+    e.preventDefault();
+    console.log('form submitted')
+  }
+
   render() {
-    const { timeStampsRemoved } = this.state;
+    const { timeStampsRemoved, nameBox, replaceName }= this.state;
     return (
       <Grid>
         <Row>
@@ -26,7 +37,13 @@ class App extends Component {
             />
           </Col>
           <Col xs={4} md={4}>
-            <TextTransform removed={timeStampsRemoved}/>
+            <TextTransform
+              removed={timeStampsRemoved}
+              nameBox={nameBox}
+              replaceName={replaceName}
+              handleTextChange={this.handleTextChange}
+              submitTextForm={this.submitTextForm}
+            />
           </Col>
         </Row>
       </Grid>
