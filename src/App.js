@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
 import { Col, PageHeader, Grid, Row } from 'react-bootstrap'
 import TextBox from './TextBox';
+import TextTransform from './TextTransform';
 
 class App extends Component {
   state = {
-    convo: ''
+    convo: '',
+    timeStampsRemoved: false,
   };
 
   handleConvoChange = (e) => {
-    console.log('this', this, 'e', e);
     this.setState({convo: e.target.value});
   }
 
   render() {
+    const { timeStampsRemoved } = this.state;
     return (
       <Grid>
         <Row>
@@ -24,7 +26,7 @@ class App extends Component {
             />
           </Col>
           <Col xs={4} md={4}>
-            right column
+            <TextTransform removed={timeStampsRemoved}/>
           </Col>
         </Row>
       </Grid>
