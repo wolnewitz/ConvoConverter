@@ -7,7 +7,7 @@ const TimeStamp = ({removed}) => {
       style={{margin: '10px 0'}}
       className="btn-danger"
     >
-      Remove TimeStamps
+      Remove Timestamps
     </Button>
   }
   return null;
