@@ -4,7 +4,7 @@ import { Button } from 'react-bootstrap';
 const TimeStamp = ({removed, removeClick}) => {
   if(!removed) {
     return <Button
-      style={{margin: '10px 0'}}
+      style={{marginTop: '80px'}}
       className="btn-danger"
       onClick={() => removeClick()}
     >
