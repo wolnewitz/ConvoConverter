@@ -25,7 +25,11 @@ class App extends Component {
     e.preventDefault();
     const { convo, nameBox, newName } = this.state;
     const newConvo = replaceName(convo, nameBox, newName);
-    this.setState({convo: newConvo});
+    this.setState({
+      convo: newConvo,
+      nameBox: '',
+      newName: '',
+    });
   }
 
   removeClick = () => {
