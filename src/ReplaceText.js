@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap'
 
-const ReplaceText = ({nameBox, replaceName, submitTextForm, handleTextChange}) => {
+const ReplaceText = ({nameBox, newName, submitTextForm, handleTextChange}) => {
   return (
     <Form onSubmit={(e)=>submitTextForm(e)}>
       <FormGroup controlId="formInlineName">
@@ -21,8 +21,8 @@ const ReplaceText = ({nameBox, replaceName, submitTextForm, handleTextChange}) =
         {' '}
         <FormControl
           placeholder="Replacement"
-          name="replaceName"
-          value={replaceName}
+          name="newName"
+          value={newName}
           type="text"
           onChange={(e)=>handleTextChange(e)}
         />

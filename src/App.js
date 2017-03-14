@@ -8,7 +8,7 @@ class App extends Component {
   state = {
     convo: '',
     nameBox: '',
-    replaceName: '',
+    newName: '',
     timeStampsRemoved: false,
   };
 
@@ -22,11 +22,13 @@ class App extends Component {
 
   submitTextForm = (e) => {
     e.preventDefault();
-    console.log('form submitted')
+    const { convo, nameBox, newName } = this.state;
+    const newConvo = replaceName(convo, nameBox, newName);
+    this.setState({convo: newConvo});
   }
 
   render() {
-    const { timeStampsRemoved, nameBox, replaceName }= this.state;
+    const { timeStampsRemoved, nameBox, newName }= this.state;
     return (
       <Grid>
         <Row>
@@ -41,7 +43,7 @@ class App extends Component {
             <TextTransform
               removed={timeStampsRemoved}
               nameBox={nameBox}
-              replaceName={replaceName}
+              newName={newName}
               handleTextChange={this.handleTextChange}
               submitTextForm={this.submitTextForm}
             />
