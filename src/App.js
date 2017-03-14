@@ -29,6 +29,7 @@ class App extends Component {
       convo: newConvo,
       nameBox: '',
       newName: '',
+      breakBoxChecked: false,
     });
   }
 
@@ -39,8 +40,19 @@ class App extends Component {
     })
   }
 
+  checkLineBreakBox = (e) => {
+    this.setState({breakBoxChecked: !this.state.breakBoxChecked})
+    console.log('checked', e);
+  }
+
   render() {
-    const { timeStampsRemoved, nameBox, newName }= this.state;
+    const {
+      timeStampsRemoved,
+      nameBox,
+      newName,
+      breakBoxChecked
+    } = this.state;
+
     return (
       <Grid>
         <Row>
@@ -59,6 +71,8 @@ class App extends Component {
               handleTextChange={this.handleTextChange}
               submitTextForm={this.submitTextForm}
               removeClick={this.removeClick}
+              checkLineBreakBox={this.checkLineBreakBox}
+              breakBoxChecked={breakBoxChecked}
             />
           </Col>
         </Row>
