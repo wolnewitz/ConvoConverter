@@ -3,6 +3,7 @@ import { Col, PageHeader, Grid, Row } from 'react-bootstrap'
 import TextBox from './TextBox';
 import TextTransform from './TextTransform';
 import replaceName from './replaceName';
+import removeTimestamps from './removeTimestamps';
 
 class App extends Component {
   state = {
@@ -27,6 +28,13 @@ class App extends Component {
     this.setState({convo: newConvo});
   }
 
+  removeClick = () => {
+    this.setState({
+      timeStampsRemoved: true,
+      convo: removeTimestamps(this.state.convo),
+    })
+  }
+
   render() {
     const { timeStampsRemoved, nameBox, newName }= this.state;
     return (
@@ -46,6 +54,7 @@ class App extends Component {
               newName={newName}
               handleTextChange={this.handleTextChange}
               submitTextForm={this.submitTextForm}
+              removeClick={this.removeClick}
             />
           </Col>
         </Row>

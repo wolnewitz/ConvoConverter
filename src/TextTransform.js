@@ -3,7 +3,7 @@ import ReplaceText from './ReplaceText';
 import TimeStamp from './TimeStamp';
 import LineBreak from './LineBreak';
 
-const TextTransform = ({removed, nameBox, newName, handleTextChange, submitTextForm}) => {
+const TextTransform = ({removed, nameBox, newName, handleTextChange, submitTextForm, removeClick}) => {
   return (
     <div>
       <ReplaceText
@@ -12,7 +12,10 @@ const TextTransform = ({removed, nameBox, newName, handleTextChange, submitTextF
         submitTextForm={submitTextForm}
         handleTextChange={handleTextChange}
       />
-      <TimeStamp removed={removed} />
+      <TimeStamp
+        removed={removed}
+        removeClick={removeClick}
+      />
       <LineBreak />
     </div>
   );
