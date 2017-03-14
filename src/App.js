@@ -4,6 +4,8 @@ import TextBox from './TextBox';
 import TextTransform from './TextTransform';
 import replaceName from './replaceName';
 import removeTimestamps from './removeTimestamps';
+import insertLineBreaks from './insertLineBreaks';
+import removeLineBreaks from './removeLineBreaks';
 
 class App extends Component {
   state = {
@@ -11,6 +13,7 @@ class App extends Component {
     nameBox: '',
     newName: '',
     timeStampsRemoved: false,
+    breakBoxChecked: false,
   };
 
   handleConvoChange = (e) => {
@@ -33,7 +36,8 @@ class App extends Component {
     });
   }
 
-  removeClick = () => {
+  removeClick = (e) => {
+    if (!this.state.convo.length) { return; }
     this.setState({
       timeStampsRemoved: true,
       convo: removeTimestamps(this.state.convo),
@@ -41,8 +45,16 @@ class App extends Component {
   }
 
   checkLineBreakBox = (e) => {
-    this.setState({breakBoxChecked: !this.state.breakBoxChecked})
-    console.log('checked', e);
+    if (!this.state.breakBoxChecked) {
+      this.setState({
+        convo: insertLineBreaks(this.state.convo, this.state.timeStampsRemoved),
+      });
+    } else {
+      this.setState({
+        convo: removeLineBreaks(this.state.convo),
+      })
+    }
+    this.setState({breakBoxChecked: !this.state.breakBoxChecked});
   }
 
   render() {
