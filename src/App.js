@@ -14,6 +14,7 @@ class App extends Component {
     newName: '',
     timeStampsRemoved: false,
     breakBoxChecked: false,
+    copied: false,
   };
 
   handleConvoChange = (e) => {
@@ -25,6 +26,13 @@ class App extends Component {
       })
     } else {
       this.setState({convo: e.target.value});
+    }
+  }
+
+  handleCopy = () => {
+    if (!this.state.copied) {
+      this.setState({copied: true})
+      setTimeout(() => this.setState({copied:false}), 1500);
     }
   }
 
@@ -71,7 +79,8 @@ class App extends Component {
       timeStampsRemoved,
       nameBox,
       newName,
-      breakBoxChecked
+      breakBoxChecked,
+      copied,
     } = this.state;
 
     return (
@@ -82,6 +91,8 @@ class App extends Component {
             <TextBox
               convo={this.state.convo}
               handleConvoChange={this.handleConvoChange}
+              handleCopy={this.handleCopy}
+              copied={copied}
             />
           </Col>
           <Col xs={4} md={4}>
