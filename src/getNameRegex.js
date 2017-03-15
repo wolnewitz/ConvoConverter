@@ -3,7 +3,9 @@ const getNameRegex = (nameString) => {
     nameString
     .split(' ')
     .filter(el => el.length > 0)
-    .join('\\s+');
+    .join('\\s+')
+    .replace(/\(/, '\\(')
+    .replace(/\)/, '\\)');
   return(new RegExp(`${nameString}`, 'g'));
 }
 
