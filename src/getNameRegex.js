@@ -4,7 +4,7 @@ const getNameRegex = (nameString) => {
     .split(' ')
     .filter(el => el.length > 0)
     .join('\\s+');
-  return(new RegExp(`${nameString}:`, 'g'));
+  return(new RegExp(`${nameString}`, 'g'));
 }
 
 export default getNameRegex;
