@@ -30,7 +30,7 @@ class App extends Component {
   }
 
   handleCopy = () => {
-    if (!this.state.copied) {
+    if (!this.state.copied && this.state.convo.length > 0) {
       this.setState({copied: true})
       setTimeout(() => this.setState({copied:false}), 1500);
     }
@@ -91,8 +91,6 @@ class App extends Component {
             <TextBox
               convo={this.state.convo}
               handleConvoChange={this.handleConvoChange}
-              handleCopy={this.handleCopy}
-              copied={copied}
             />
           </Col>
           <Col xs={4} md={4}>
@@ -105,6 +103,9 @@ class App extends Component {
               removeClick={this.removeClick}
               checkLineBreakBox={this.checkLineBreakBox}
               breakBoxChecked={breakBoxChecked}
+              handleCopy={this.handleCopy}
+              copied={copied}
+              convo={this.state.convo}
             />
           </Col>
         </Row>
