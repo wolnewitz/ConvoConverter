@@ -17,7 +17,15 @@ class App extends Component {
   };
 
   handleConvoChange = (e) => {
-    this.setState({convo: e.target.value});
+    if (e.target.value === '') {
+      this.setState({
+        timeStampsRemoved: false,
+        breakBoxChecked: false,
+        convo: e.target.value,
+      })
+    } else {
+      this.setState({convo: e.target.value});
+    }
   }
 
   handleTextChange = (e) => {
@@ -48,13 +56,14 @@ class App extends Component {
     if (!this.state.breakBoxChecked) {
       this.setState({
         convo: insertLineBreaks(this.state.convo, this.state.timeStampsRemoved),
-      });
+        breakBoxChecked: !this.state.breakBoxChecked,
+      })
     } else {
       this.setState({
         convo: removeLineBreaks(this.state.convo),
+        breakBoxChecked: !this.state.breakBoxChecked,
       })
     }
-    this.setState({breakBoxChecked: !this.state.breakBoxChecked});
   }
 
   render() {

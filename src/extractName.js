@@ -1,5 +1,4 @@
 const extractName = (line, timeStampsRemoved) => {
-  console.log('line', line, timeStampsRemoved)
   if (timeStampsRemoved) {
     let matched = line.match(/^.*?:/)
     return matched ? matched[0] : false;

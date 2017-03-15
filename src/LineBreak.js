@@ -5,6 +5,7 @@ const LineBreak = ({checkLineBreakBox, breakBoxChecked}) =>
   <Checkbox
     onChange={(e) => checkLineBreakBox(e)}
     value={breakBoxChecked}
+    checked={breakBoxChecked}
   >
     Line Breaks
   </Checkbox>;
