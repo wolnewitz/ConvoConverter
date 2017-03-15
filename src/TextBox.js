@@ -11,7 +11,7 @@ const TextBox = ({convo, handleConvoChange}) =>
     <FormControl
       style={textAreaStyles}
       componentClass="textarea"
-      placeholder="Paste and edit conversation here..."
+      placeholder="Paste Skype conversation here"
       value={convo}
       onChange={(e) => handleConvoChange(e)}
     />
