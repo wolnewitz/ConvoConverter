@@ -2,6 +2,7 @@ import extractName from './extractName'
 
 const insertLineBreaks = (convo, timeStampsRemoved) => {
   const splitConvo = convo.split('\n');
+  console.log('splitConvo', splitConvo);
   let previousLineName;
   const lineArrayWithBreaks = splitConvo.reduce((memo, line) => {
     if (!line.length) { return memo; }
@@ -17,11 +18,12 @@ const insertLineBreaks = (convo, timeStampsRemoved) => {
       return memo;
     }
     // A new person so insert a break
-    if (!line.match(previousLineName)) {
+    let extractedName = extractName(line, timeStampsRemoved);
+    if (extractedName && !line.match(previousLineName)) {
       memo.push('');
     }
     memo.push(line);
-    let extractedName = extractName(line, timeStampsRemoved);
+    console.log('line', line, 'nameextrace', extractedName, previousLineName);
     // handle messages with line breaks
     previousLineName = extractedName ? extractedName : previousLineName;
     return memo;
