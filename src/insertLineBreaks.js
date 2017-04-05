@@ -2,7 +2,6 @@ import extractName from './extractName'
 
 const insertLineBreaks = (convo, timeStampsRemoved) => {
   const splitConvo = convo.split('\n');
-  console.log('splitConvo', splitConvo);
   let previousLineName;
   const lineArrayWithBreaks = splitConvo.reduce((memo, line) => {
     if (!line.length) { return memo; }
@@ -23,7 +22,6 @@ const insertLineBreaks = (convo, timeStampsRemoved) => {
       memo.push('');
     }
     memo.push(line);
-    console.log('line', line, 'nameextrace', extractedName, previousLineName);
     // handle messages with line breaks
     previousLineName = extractedName ? extractedName : previousLineName;
     return memo;
